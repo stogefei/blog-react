@@ -6,12 +6,13 @@ import {BrowserRouter, Redirect} from 'react-router-dom';
 // import Product from './view/product';
 // import Infor from './view/info';
 import * as serviceWorker from './serviceWorker';
+
 ReactDOM.render(
     (
         <BrowserRouter>
-                    <App />
-                    {/* <Route path="/" component={App}/> */}
-                    <Redirect path="/" to={{pathname: '/menu'}} />
+            <App/>
+            {/* <Route path="/" component={App}/> */}
+            <Redirect path="/" to={{pathname: '/menu'}}/>
         </BrowserRouter>
     ), document.getElementById('root'));
 

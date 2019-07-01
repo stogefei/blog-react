@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../components/header/header'
+import Footer from '../components/footer/footer'
 import '../css/main.css'
 import '../css/reset.css'
 import {Route, Switch} from 'react-router-dom';
@@ -16,6 +17,7 @@ function App() {
         <Route path="/product" component={Product}/>
         <Route path="/infor" component={Infor}/>
       </Switch>
+        <Footer/>
     </div>
   );
 }
