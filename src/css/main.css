@@ -1,0 +1,46 @@
+.App{
+    max-width: 1110px;
+    margin: 0 auto;
+}
+
+/* 头部 */
+.header-menu{
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-menu .logo{
+    display: flex;
+}
+
+.menu-tabs ul{
+    display: flex;
+}
+
+.logo-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.menu-tabs ul li{
+    line-height:100px;
+}
+.menu-tabs ul li a{
+    padding-left: 20px;
+    font-size:18px;
+    font-family:PingFangSC-Medium;
+    font-weight:500;
+    color:rgba(0,0,0,1);
+    line-height:18px;
+    letter-spacing:1px;
+}
+
+.menu-tabs ul li .active{
+    text-decoration:line-through;
+}
+
+.logo-text{
+    font-size: 24px;
+    padding-left: 10px;
+}
+/* menu */
