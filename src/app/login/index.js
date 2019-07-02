@@ -6,8 +6,8 @@ class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      username: 'name', //账号
-      pwd: '' // 密码
+      username: 'zhangsan', //账号
+      pwd: '123' // 密码
     }
     this.handleLogin = this.handleLogin.bind(this)
     // this.handleChange = this.handleChange.bind(this)
@@ -29,7 +29,7 @@ class Login extends Component {
 
     axios({
         method: 'POST',
-        url: '/api/user/login',
+        url: 'api/user/login',
         data: {
             "username": username,
             "password": pwd
