@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+// import './setupProxy'
 import App from './app/App';
 import * as serviceWorker from './serviceWorker';
 

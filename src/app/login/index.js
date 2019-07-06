@@ -10,7 +10,20 @@ class Login extends Component {
       pwd: '123' // 密码
     }
     this.handleLogin = this.handleLogin.bind(this)
+    this.addNew = this.addNew.bind(this)
+    this.updateBlog = this.updateBlog.bind(this)
+    this.deleteBlog = this.deleteBlog.bind(this)
     // this.handleChange = this.handleChange.bind(this)
+    }
+    componentDidMount() {
+      axios({
+        method: 'GET',
+        url: '/api/blog/list'
+        });
+        axios({
+          method: 'GET',
+          url: '/api/user/login-test'
+          });
     }
     handleChange(key,val) {
         console.log(key,val.target.value)
@@ -35,15 +48,62 @@ class Login extends Component {
             "password": pwd
         }
         });
-    } 
-
+    }
+    addNew() {
+      axios({
+        method: 'POST',
+        url: 'api/blog/new',
+        data: {
+            "title": 'test',
+            "content": 'react'
+        }
+        });
+    }
+    updateBlog() {
+      axios({
+        method: 'POST',
+        url: 'api/blog/update',
+        data: {
+            "id": 5,
+            "title": new Date(),
+            "content": 'react3'
+        }
+        });
+    }
+    deleteBlog() {
+      axios({
+        method: 'POST',
+        url: 'api/blog/del',
+        data: {
+            "id": 5
+        }
+        });
+    }
   render() {
     return (
       <div>
           <Input placeholder="账号" onChange={(v)=>this.handleChange('username',v)} />
           <Input placeholder="密码" onChange={(v)=>this.handleChange('pwd',v)} />
           {/* <input type="text" value={this.state.value} onChange={this.handleChange} /> */}
-          <Button type="primary" onClick={this.handleLogin}>Button</Button>
+          <Button type="primary" onClick={this.handleLogin}>登录博客</Button>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+
+          {/* <input type="text" value={this.state.value} onChange={this.handleChange} /> */}
+          <Button type="primary" onClick={this.addNew}>新建博客</Button>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <Button type="primary" onClick={this.updateBlog}>更新博客</Button>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <Button type="primary" onClick={this.deleteBlog}>删除博客</Button>
+          <br/>
       </div>
     );
   }
