@@ -1,5 +1,6 @@
 import React from 'react';
 import bannerImg from '../imgs/img-banner.png'
+import {fetchList} from '../api/datalist'
 class Menu extends React.Component{
     constructor(props) {
         super(props)
@@ -15,6 +16,10 @@ class Menu extends React.Component{
     handleMouseLeave(index) {
         this.setState({active:-1});
     }
+    componentDidMount() {
+        fetchList(1)
+    }
+
     render() {
         const list = [
             {

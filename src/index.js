@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import 'normalize.css';
 import App from './view/App';
 import {BrowserRouter, Redirect} from 'react-router-dom';
-// import Product from './view/product';
-// import Infor from './view/info';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
