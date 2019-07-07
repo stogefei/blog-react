@@ -64,7 +64,7 @@ class Login extends Component {
         method: 'POST',
         url: 'api/blog/update',
         data: {
-            "id": 5,
+            "id": 10,
             "title": new Date(),
             "content": 'react3'
         }
@@ -75,7 +75,7 @@ class Login extends Component {
         method: 'POST',
         url: 'api/blog/del',
         data: {
-            "id": 5
+            "id": 10
         }
         });
     }
