@@ -6,13 +6,15 @@ class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      username: 'zhangsan', //账号
-      pwd: '123' // 密码
+      username: 'zhangsan1', //账号
+      pwd: '122123', // 密码
+      realname: '张三121'
     }
     this.handleLogin = this.handleLogin.bind(this)
     this.addNew = this.addNew.bind(this)
     this.updateBlog = this.updateBlog.bind(this)
     this.deleteBlog = this.deleteBlog.bind(this)
+    this.handleRegister = this.handleRegister.bind(this)
     // this.handleChange = this.handleChange.bind(this)
     }
     componentDidMount() {
@@ -36,6 +38,18 @@ class Login extends Component {
     //     console.log(e.target.value)
        
     // }
+    handleRegister() {
+      const {username, pwd, realname} = this.state
+      axios({
+        method: 'POST',
+        url: 'api/user/register',
+        data: {
+            "username": username,
+            "password": pwd,
+            "realname": realname
+        }
+        });
+    }
     handleLogin(){
     console.log(this.state)
     const {username, pwd} = this.state
@@ -85,12 +99,16 @@ class Login extends Component {
           <Input placeholder="账号" onChange={(v)=>this.handleChange('username',v)} />
           <Input placeholder="密码" onChange={(v)=>this.handleChange('pwd',v)} />
           {/* <input type="text" value={this.state.value} onChange={this.handleChange} /> */}
+          <Button type="primary" onClick={this.handleRegister}>注册博客</Button>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
           <Button type="primary" onClick={this.handleLogin}>登录博客</Button>
           <br/>
           <br/>
           <br/>
           <br/>
-
           {/* <input type="text" value={this.state.value} onChange={this.handleChange} /> */}
           <Button type="primary" onClick={this.addNew}>新建博客</Button>
           <br/>
