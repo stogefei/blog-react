@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import {Button,Input} from 'antd';
+import {Button,Input, message} from 'antd';
 import axios from 'axios'
-
+import {getBlogList} from '../../api/blog'
+import {loginByUsername} from '../../api/login'
 class Login extends Component {
-  constructor(props) {
+    constructor(props) {
     super(props)
     this.state = {
-      username: 'zhangsan1', //账号
-      pwd: '122123', // 密码
-      realname: '张三121'
+      username: 'zhangsan111', //账号
+      pwd: '123', // 密码
+      realname: '张三'
     }
     this.handleLogin = this.handleLogin.bind(this)
     this.addNew = this.addNew.bind(this)
@@ -18,10 +19,7 @@ class Login extends Component {
     // this.handleChange = this.handleChange.bind(this)
     }
     componentDidMount() {
-      axios({
-        method: 'GET',
-        url: '/api/blog/list'
-        });
+        getBlogList()
         axios({
           method: 'GET',
           url: '/api/user/login-test'
@@ -32,12 +30,8 @@ class Login extends Component {
         this.setState({
             [key]:val.target.value
         })
-       
+
     }
-    // handleChange(e) {
-    //     console.log(e.target.value)
-       
-    // }
     handleRegister() {
       const {username, pwd, realname} = this.state
       axios({
@@ -50,18 +44,16 @@ class Login extends Component {
         }
         });
     }
-    handleLogin(){
-    console.log(this.state)
-    const {username, pwd} = this.state
-
-    axios({
-        method: 'POST',
-        url: 'api/user/login',
-        data: {
-            "username": username,
-            "password": pwd
+    handleLogin = async () => {
+        console.log(this.state)
+        const {username, pwd} = this.state
+        const result = await loginByUsername(username, pwd)
+        console.log(result)
+        if (result.data.errno === 0) {
+            message.success('登录成功');
+        } else {
+            message.error(result.data.message);
         }
-        });
     }
     addNew() {
       axios({
