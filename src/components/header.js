@@ -14,26 +14,11 @@ class Header extends Component {
                    </div>
                    <div className="home-right">
                        <p>
-                           <Button>登录</Button>
+                           <a href="">登录</a>
                        </p>
                        <p>
-                           <Button type="primary">注册</Button>
+                           <Button className="register-btn">注册</Button>
                        </p>
-                       <p>
-                           <Button type="primary" icon="edit" shape="round">
-                               写文章
-                           </Button>
-                       </p>
-                   </div>
-                   <div className="home-center">
-                       <ul className="header-tab">
-                           <li>
-                               <a href="#">
-                                   <Icon type="home" theme="filled" />
-                                   首页
-                               </a>
-                           </li>
-                       </ul>
                    </div>
                </div>
             </div>
