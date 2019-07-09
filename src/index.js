@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles/index.less';
+import './styles/index.scss';
 // import './setupProxy'
 import App from './views/App';
 import * as serviceWorker from './serviceWorker';
