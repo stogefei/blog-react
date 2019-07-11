@@ -11,3 +11,14 @@ export function loginByUsername(username, password) {
         data
     })
 }
+export function registerByUsername(username, password) {
+    const data = {
+        username,
+        password
+    }
+    return request({
+        url: 'api/user/register',
+        method: 'post',
+        data
+    })
+}

@@ -10,7 +10,7 @@ const service = axios.create({
 service.interceptors.request.use(
     config => {
     // Do something before request is sent
-    config.headers['X-Token'] = ''
+    config.headers['X-Token'] = '';
     return config
 },
 error => {
@@ -25,7 +25,7 @@ service.interceptors.response.use(
     response => response,
     error => {
     console.log('err' + error) // for debug
-    message.error('This is an error message');
+    message.error('服务器响应错误');
     return Promise.reject(error)
 }
 )
