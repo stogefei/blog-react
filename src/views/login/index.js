@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Button,Input, message} from 'antd';
 import axios from 'axios'
 import {getBlogList} from '../../api/blog'
-import {loginByUsername} from '../../api/login'
+import {loginByUsername} from '../../api/user'
 class Login extends Component {
     constructor(props) {
     super(props)

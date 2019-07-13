@@ -6,3 +6,10 @@ export function getBlogList(id='') {
         method: 'get'
     })
 }
+export function addNewBlog(data) {
+    return request({
+        url: '/api/blog/new',
+        method: 'post',
+        data
+    })
+}
