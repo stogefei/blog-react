@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/header/header'
 import Footer from '../components/footer/footer'
-import '../css/main.css'
+import '../css/main.scss'
 import '../css/reset.css'
 import {Route, Switch} from 'react-router-dom';
 import Menu from './menu';

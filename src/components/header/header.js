@@ -19,9 +19,6 @@ function Header() {
                         <NavLink to="/menu">MUNE SHOW</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/product">MUNE SHOW</NavLink>
-                    </li>
-                    <li>
                         <NavLink to="/infor">MUNE SHOW</NavLink>
                     </li>
                 </ul>

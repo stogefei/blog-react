@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'normalize.css';
 import App from './view/App';
+import Detail from './view/product';
 import {BrowserRouter, Redirect} from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 
@@ -11,6 +12,7 @@ ReactDOM.render(
             <App/>
             {/* <Route path="/" component={App}/> */}
             <Redirect path="/" to={{pathname: '/menu'}}/>
+            <Redirect path="/detail" compnent={Detail}/>
         </BrowserRouter>
     ), document.getElementById('root'));
 
