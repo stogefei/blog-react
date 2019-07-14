@@ -1,7 +1,8 @@
 import React from 'react';
+import Header from '../components/header/header'
+import Footer from '../components/footer/footer'
 import bannerImg from '../imgs/img-banner.png'
 import mdImg from '../imgs/img-cover.png'
-import mdImg2 from '../imgs/img-cover.png'
 import ItmImg from '../imgs/img-cover-dark-02.png'
 import {fetchList} from '../api/datalist'
 import LoadMore from '../components/laodmore.js'
@@ -11,9 +12,16 @@ class Menu extends React.Component{
         super(props)
         this.state = {
            active: -1,
+            activeItem: -1,
+            activeListItem: -1,
+            toTopShow: false
     }
         this.handleMouseEnter = this.handleMouseEnter.bind(this);
         this.handleMouseLeave = this.handleMouseLeave.bind(this);
+        this.handleItemMouseEnter = this.handleItemMouseEnter.bind(this);
+        this.handleItemMouseLeave = this.handleItemMouseLeave.bind(this);
+        this.handleListMouseEnter = this.handleListMouseEnter.bind(this);
+        this.handleListMouseLeave = this.handleListMouseLeave.bind(this);
         this.itemClick = this.itemClick.bind(this);
     }
     handleMouseEnter(index) {
@@ -24,12 +32,23 @@ class Menu extends React.Component{
     }
     itemClick(item) {
         console.log(this.props)
-        this.props.history.push('/detail')
+        this.props.history.push('/menu/detail')
+    }
+    handleItemMouseEnter(index) {
+        this.setState({activeItem:index});
+    }
+    handleItemMouseLeave() {
+        this.setState({activeItem:-1});
+    }
+    handleListMouseEnter(index) {
+        this.setState({activeListItem:index});
+    }
+    handleListMouseLeave() {
+        this.setState({activeListItem:-1});
     }
     componentDidMount() {
         fetchList(1)
     }
-
     render() {
         const list = [
             {
@@ -45,8 +64,31 @@ class Menu extends React.Component{
                 id: 4
             }
         ];
+        const list2 = [
+            {
+                id: 1
+            },
+            {
+                id: 2
+            },
+        ];
+        const list3 = [
+            {
+                id: 1
+            },
+            {
+                id: 2
+            },
+            {
+                id: 3
+            },
+            {
+                id: 4
+            }
+        ];
         return (
             <div className="menu-page">
+                <Header/>
                 <div className="menu-item">
                     <div className="menu-left">
                         <div className="menu-left-box">
@@ -102,183 +144,69 @@ class Menu extends React.Component{
                 <div className="menu-item-list">
                     <p className="item-text">UX/UI SYSTEMS</p>
                     <div className="item-body">
-                        <div className="item-body-box">
-                            <div className="item-body-left-box">
-                                <div className="item-md-img">
-                                    <img src={mdImg} alt=""/>
-                                </div>
-                                <div className="item-md-bt">
-                                  <p className="item-md-title">
+                        {list2.map((item, index) =>
+                            <div className="item-body-box"  key={item.id}>
+                                <div onMouseEnter={this.handleItemMouseEnter.bind(this, index)}
+                                    onMouseLeave={this.handleItemMouseLeave.bind(this, index)}
+                                    className={`item-body-left-box ${index === this.state.activeItem ? 'active-item' : ''}`}>
+                                    <div className="item-md-img">
+                                       <div className="item-md-img-box">
+                                           <img src={mdImg} alt=""/>
+                                       </div>
+                                    </div>
+                                    <div className="item-md-bt">
+                                        <p className="item-md-title">
                                       <span className="item-title-left">
                                         UX/UI SYSTEMS Copy
                                     </span>
-                                      <span className="item-md-tag">
+                                            <span className="item-md-tag">
                                         tag
                                     </span>
-                                  </p>
-                                    <p className="item-md-text">
-                                        Create web design with basic web components based on Sketch nested symbols
-                                    </p>
-                                    <p>
+                                        </p>
+                                        <p className="item-md-text">
+                                            Create web design with basic web components based on Sketch nested symbols
+                                        </p>
+                                        <p>
                                     <span className="item-md-inner">
                                         Compatible with
                                     </span>
-                                        <span className="item-md-author">
+                                            <span className="item-md-author">
                                         Sketch
                                     </span>
-                                    </p>
+                                        </p>
+                                    </div>
                                 </div>
-
                             </div>
-                        </div>
-                        <div className="item-body-box">
-                            <div className="item-body-left-box">
-                                <div className="item-md-img">
-                                    <img src={mdImg2} alt=""/>
-                                </div>
-                                <div className="item-md-bt">
-                                    <p className="item-md-title">
-                                      <span className="item-title-left">
-                                        UX/UI SYSTEMS Copy
-                                    </span>
-                                        <span className="item-md-tag">
-                                        tag
-                                    </span>
-                                    </p>
-                                    <p className="item-md-text">
-                                        Create web design with basic web components based on Sketch nested symbols
-                                    </p>
-                                    <p>
-                                    <span className="item-md-inner">
-                                        Compatible with
-                                    </span>
-                                        <span className="item-md-author">
-                                        Sketch
-                                    </span>
-                                    </p>
-                                </div>
-
-                            </div>
-                        </div>
+                        )}
                     </div>
                 </div>
-                <LoadMore></LoadMore>
+                <LoadMore/>
                 <div className="menu-item-list">
                     <p className="item-text">UX/UI SYSTEMS</p>
                     <div className="item-body-list">
                        <ul>
-                           <li className="item-pro-list">
-                              <div className="item-pro-box">
-                                  <div className="list-img-box">
-                                      <img src={ItmImg} alt=""/>
-                                  </div>
-                                  <div className="list-tile">
-                                      <div className="list-tile-box">
-                                          <p className="list-top-tile">UX/UI SYSTEMS</p>
-                                          <span className="list-top-tag">Tag</span>
-                                      </div>
-                                  </div>
-                                  <p className="list-detail">
-                                      Create web design with basic web components based on Sketch
-                                  </p>
-                              </div>
-                           </li>
-                           <li className="item-pro-list">
-                               <div className="item-pro-box">
-                                   <div className="list-img-box">
-                                       <img src={ItmImg} alt=""/>
-                                   </div>
-                                   <div className="list-tile">
-                                       <div className="list-tile-box">
-                                           <p className="list-top-tile">UX/UI SYSTEMS</p>
-                                           <span className="list-top-tag">Tag</span>
+                           {list3.map((item, index) =>
+                               <li
+                                   onMouseEnter={this.handleListMouseEnter.bind(this, index)}
+                                   onMouseLeave={this.handleListMouseLeave.bind(this, index)}
+                                   className={`item-pro-list ${index === this.state.activeListItem ? 'active-item-list' : ''}`}
+                                   key={item.id}>
+                                   <div className="item-pro-box">
+                                       <div className="list-img-box">
+                                           <img src={ItmImg} alt=""/>
                                        </div>
-                                   </div>
-                                   <p className="list-detail">
-                                       Create web design with basic web components based on Sketch
-                                   </p>
-                               </div>
-                           </li>
-                           <li className="item-pro-list">
-                               <div className="item-pro-box">
-                                   <div className="list-img-box">
-                                       <img src={ItmImg} alt=""/>
-                                   </div>
-                                   <div className="list-tile">
-                                       <div className="list-tile-box">
-                                           <p className="list-top-tile">UX/UI SYSTEMS</p>
-                                           <span className="list-top-tag">Tag</span>
+                                       <div className="list-tile">
+                                           <div className="list-tile-box">
+                                               <p className="list-top-tile">UX/UI SYSTEMS</p>
+                                               <span className="list-top-tag">Tag</span>
+                                           </div>
                                        </div>
+                                       <p className="list-detail">
+                                           Create web design with basic web components based on Sketch
+                                       </p>
                                    </div>
-                                   <p className="list-detail">
-                                       Create web design with basic web components based on Sketch
-                                   </p>
-                               </div>
-                           </li>
-                           <li className="item-pro-list">
-                               <div className="item-pro-box">
-                                   <div className="list-img-box">
-                                       <img src={ItmImg} alt=""/>
-                                   </div>
-                                   <div className="list-tile">
-                                       <div className="list-tile-box">
-                                           <p className="list-top-tile">UX/UI SYSTEMS</p>
-                                           <span className="list-top-tag">Tag</span>
-                                       </div>
-                                   </div>
-                                   <p className="list-detail">
-                                       Create web design with basic web components based on Sketch
-                                   </p>
-                               </div>
-                           </li>
-                           <li className="item-pro-list">
-                               <div className="item-pro-box">
-                                   <div className="list-img-box">
-                                       <img src={ItmImg} alt=""/>
-                                   </div>
-                                   <div className="list-tile">
-                                       <div className="list-tile-box">
-                                           <p className="list-top-tile">UX/UI SYSTEMS</p>
-                                           <span className="list-top-tag">Tag</span>
-                                       </div>
-                                   </div>
-                                   <p className="list-detail">
-                                       Create web design with basic web components based on Sketch
-                                   </p>
-                               </div>
-                           </li>
-                           <li className="item-pro-list">
-                               <div className="item-pro-box">
-                                   <div className="list-img-box">
-                                       <img src={ItmImg} alt=""/>
-                                   </div>
-                                   <div className="list-tile">
-                                       <div className="list-tile-box">
-                                           <p className="list-top-tile">UX/UI SYSTEMS</p>
-                                           <span className="list-top-tag">Tag</span>
-                                       </div>
-                                   </div>
-                                   <p className="list-detail">
-                                       Create web design with basic web components based on Sketch
-                                   </p>
-                               </div>
-                           </li>
-                           <li className="item-pro-list">
-                               <div className="item-pro-box">
-                                   <div className="list-img-box">
-                                       <img src={ItmImg} alt=""/>
-                                   </div>
-                                   <div className="list-tile">
-                                       <div className="list-tile-box">
-                                           <p className="list-top-tile">UX/UI SYSTEMS</p>
-                                           <span className="list-top-tag">Tag</span>
-                                       </div>
-                                   </div>
-                                   <p className="list-detail">
-                                       Create web design with basic web components based on Sketch
-                                   </p>
-                               </div>
-                           </li>
+                               </li>
+                           )}
                        </ul>
                     </div>
                 </div>
@@ -300,7 +228,8 @@ class Menu extends React.Component{
                         </div>
                     </div>
                 </div>
-                <ToTOP></ToTOP>
+                <ToTOP/>
+                <Footer/>
             </div>
         );
     }
