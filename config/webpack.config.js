@@ -455,30 +455,31 @@ module.exports = function(webpackEnv) {
               ),
             },
               //less
-            {
-              test: lessRegex,
-              exclude: lessModuleRegex,
-              use:getStyleLoaders(
+              {
+                test: /\.less$/,
+                use: [
                   {
-                    importLoaders: 2,
-                    sourceMap: isEnvProduction && shouldUseSourceMap,
+                    loader: 'style-loader',
+                    options: {
+                      sourceMap: process.env.NODE_ENV !== 'production',
+                    },
                   },
-                  'less-loader'
-              ),
-              sideEffects: true,
-            },
-            {
-              test: lessModuleRegex,
-              use:getStyleLoaders(
                   {
-                    importLoaders: 2,
-                    sourceMap: isEnvProduction && shouldUseSourceMap,
-                    modules: true,
-                    getLocalIdent: getCSSModuleLocalIdent,
+                    loader: 'css-loader',
+                    options: {
+                      importLoaders: 1,
+                      sourceMap: process.env.NODE_ENV !== 'production',
+                    },
                   },
-                  'less-loader'
-              ),
-            },
+                  {
+                    loader: "less-loader",
+                    options: {
+                        javascriptEnabled: true
+                    }
+                }
+                ],
+              },
+
             // "file" loader makes sure those assets get served by WebpackDevServer.
             // When you `import` an asset, you get its (virtual) filename.
             // In production, they would get copied to the `build` folder.
