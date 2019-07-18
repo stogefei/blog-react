@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import './styles/index.less';
 import './styles/theme.less';
 // import './setupProxy'
-import App from './views/App';
+import Home from './views/home';
 import Blog from './views/blog';
 import BlogDetail from './views/blogDetail';
 import reducers from './redux/reducer';
@@ -25,7 +25,7 @@ ReactDOM.render(
             <div className='body-box'>
                 <Switch>
                     {/*<App />*/}
-                    <Route path='/' exact component={App} />
+                    <Route path='/' exact component={Home} />
                     <Route path='/editorblog' component={Blog} />
                     <Route path='/blogdetail/:id' component={BlogDetail} />
                 </Switch>

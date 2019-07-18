@@ -6,7 +6,7 @@ export function loginByUsername(username, password) {
         password
     }
     return request({
-        url: 'api/user/login',
+        url: '/api/user/login',
         method: 'post',
         data
     })
@@ -18,20 +18,20 @@ export function registerByUsername(username, password, realname) {
         realname
     }
     return request({
-        url: 'api/user/register',
+        url: '/api/user/register',
         method: 'post',
         data
     })
 }
 export function getUserInfo() {
     return request({
-        url: 'api/user/infor',
+        url: '/api/user/infor',
         method: 'get'
     })
 }
 export function logoutUserInfo() {
     return request({
-        url: 'api/user/logout',
+        url: '/api/user/logout',
         method: 'get'
     })
 }

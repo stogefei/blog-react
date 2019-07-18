@@ -107,6 +107,7 @@ class Header extends Component {
             })
     }
     componentWillMount() {
+        console.log(this.props)
         this.props.getUser()
     }
     componentDidMount() {
