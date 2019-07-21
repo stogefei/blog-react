@@ -13,3 +13,12 @@ export function addNewBlog(data) {
         data
     })
 }
+export function getBlogDetail(id) {
+    return request({
+        url: '/api/blog/detail',
+        method: 'get',
+        params: {
+            id: id
+        }
+    })
+}
