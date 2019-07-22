@@ -116,7 +116,7 @@ class Header extends Component {
 
     render() {
         const username = this.props.username;
-        // const realname = this.props.realname;
+        const realname = this.props.realname;
         const showRealName =  this.state.showName
         const { getFieldDecorator } = this.props.form;
         const menu = (
@@ -138,7 +138,7 @@ class Header extends Component {
                     </Dropdown>
                 </p>
                 <p>
-                    <Avatar style={{ color: '#f56a00', backgroundColor: '#fde3cf' }}>U</Avatar>
+                    <Avatar style={{ color: '#f56a00', backgroundColor: '#fde3cf' }}>{realname}</Avatar>
                 </p>
             </div>
         );
@@ -163,17 +163,14 @@ class Header extends Component {
                 <div className="nav-tab">
                     <ul>
                         <li>
-                            <a href="/">Home</a>
+                            <a href="/">首页</a>
                         </li>
                         <li>
-                            <a href="/">OneZero</a>
+                            <a href="/">Github</a>
                         </li>
                         <li>
-                            <a href="/">Elemental</a>
+                            <a href="/">简历</a>
                         </li>
-                        <li><a href="/">GEN</a></li>
-                        <li><a href="/">Startups</a></li>
-                        <li><a href="/">Self</a></li>
                     </ul>
                 </div>
                 <Modal

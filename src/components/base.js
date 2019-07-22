@@ -109,7 +109,7 @@ class Base extends Component {
                     <div className="data-list">
                         <div className="data-left">
                             <div className="data-left-title">
-                                <p className="data-left-inner text-color">Featured for members</p>
+                                <p className="data-left-inner text-color">一些随记</p>
                                 <span>&nbsp;</span>
                             </div>
                             <ul>
@@ -141,54 +141,27 @@ class Base extends Component {
                         </div>
                         <div className="data-right">
                             <div className="data-left-title">
-                                <p className="data-right-inner text-color">Popular on Medium</p>
+                                <p className="data-right-inner text-color">热门博客</p>
                             </div>
                             <ul className="popular-data">
-                                <li className="popular-item">
+                                {this.props.data.length ? this.props.data.map((item,index) => {
+                                    return (
+                                <li className="popular-item" key={item.id} onClick={this.viewDetail.bind(this, item.id)}>
                                     <p className="item-count">
-                                        01
+                                        {index.length>2?index:`0`+ index}
                                     </p>
                                     <div className="popular-data-item">
-                                        <h2 className="data-item-title text-color">How to Ask for Help at Work</h2>
+                                        <h2 className="data-item-title text-color">{item.title}</h2>
                                         <p className="data-item-detail summy-color">
-                                            The Secretary of State’s whole career has revolved around excusing human rights violations and cozying up to dictators.
+                                            {item.content}
                                         </p>
                                         <div className="text-info">
-                                            <p className="text-author">Forge</p>
-                                            <p className="text-time">2018-09-00</p>
+                                            <p className="text-author">{item.author}</p>
+                                            <p className="text-time">{moment(item.createtime).format("YYYY-MM-DD HH:mm:ss")}</p>
                                         </div>
                                     </div>
                                 </li>
-                                <li className="popular-item">
-                                    <p className="item-count">
-                                        01
-                                    </p>
-                                    <div className="popular-data-item">
-                                        <h2 className="data-item-title text-color">How to Ask for Help at Work</h2>
-                                        <p className="data-item-detail summy-color">
-                                            The Secretary of State’s whole career has revolved around excusing human rights violations and cozying up to dictators.
-                                        </p>
-                                        <div className="text-info">
-                                            <p className="text-author">Forge</p>
-                                            <p className="text-time">2018-09-00</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li className="popular-item">
-                                    <p className="item-count">
-                                        01
-                                    </p>
-                                    <div className="popular-data-item">
-                                        <h2 className="data-item-title text-color">How to Ask for Help at Work</h2>
-                                        <p className="data-item-detail summy-color">
-                                            The Secretary of State’s whole career has revolved around excusing human rights violations and cozying up to dictators.
-                                        </p>
-                                        <div className="text-info">
-                                            <p className="text-author">Forge</p>
-                                            <p className="text-time">2018-09-00</p>
-                                        </div>
-                                    </div>
-                                </li>
+                                        )}):null}
                             </ul>
                         </div>
                     </div>

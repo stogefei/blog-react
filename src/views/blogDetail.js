@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from '../components/header';
+import Footer from '../components/footer';
 import '../styles/detail.less';
 import ReactMarkdown from 'react-markdown'
 import {getBlogDetail} from '../api/blog';
@@ -38,15 +39,18 @@ class BlogDetail extends React.Component{
             <div className='detail-box'>
                  <Header/>
                 <div className='detail-wrapper'>
-                <h1 className="detail-title text">{this.state.title}</h1>
-                <div className='author-info'>
-                    <span>{this.state.author}</span>
-                    <span>{moment(this.state.time).format("YYYY-MM-DD HH:mm:ss")}</span>
+                    <div className="detail-box-inner">
+                        <h1 className="detail-title text">{this.state.title}</h1>
+                        <div className='author-info'>
+                            <span>{this.state.author}</span>
+                            <span>{moment(this.state.time).format("YYYY-MM-DD HH:mm:ss")}</span>
+                        </div>
+                        <div className='blog-text'>
+                            <ReactMarkdown source={this.state.blog} />
+                        </div>
+                    </div>
                 </div>
-                <div className='blog-text'>
-                    <ReactMarkdown source={this.state.blog} />
-                </div>
-                </div>  
+                <Footer/>
             </div>
         )
     }

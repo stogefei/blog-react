@@ -7,6 +7,7 @@ import IScroll from 'iscroll';
 import {Icon} from 'antd'
 import {hideTab} from "../redux/user.redux";
 import {getBlogList} from "../api/blog";
+import Footer from '../components/footer';
 let myScroll;
 @withRouter
 @connect(
@@ -39,22 +40,22 @@ class Home extends Component {
     }
     componentDidMount() {
         console.log('componentDidMount')
-        let that = this;
-        myScroll = new IScroll('.base-box',{
-            mouseWheel: true,
-            scrollbars: true,
-            mouseWheelSpeed: 30
-        });
-        setTimeout(function(){
-            myScroll.refresh();
-        },500);
-        myScroll.on('scrollEnd',function() {
-            if (this.y < -100 ) {
-              that.props.hideTab({type:true})
-            } else {
-                that.props.hideTab({type:false})
-            }
-        });
+        // let that = this;
+        // myScroll = new IScroll('.base-box',{
+        //     mouseWheel: true,
+        //     scrollbars: true,
+        //     mouseWheelSpeed: 30
+        // });
+        // setTimeout(function(){
+        //     myScroll.refresh();
+        // },500);
+        // myScroll.on('scrollEnd',function() {
+        //     if (this.y < -100 ) {
+        //       that.props.hideTab({type:true})
+        //     } else {
+        //         that.props.hideTab({type:false})
+        //     }
+        // });
     }
     render() {
         const blogs =  this.state.blogList;
@@ -62,9 +63,11 @@ class Home extends Component {
             <div className="home-container">
                 <Header/>
                 <Base data={blogs}/>
+                <Footer/>
                 <div className='editor-page' onClick={this.editor}>
                     <Icon type="edit" />
                 </div>
+
             </div>
         )
     };
